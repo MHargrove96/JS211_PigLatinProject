@@ -11,22 +11,22 @@
 // });
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-let newWord = "";
-const input = document.getElementById('wordInput');
-input.addEventListener('keyup', (evt) => {
-  newWord.evt.target.value;
+
+let newWord = ''; 
+const input = document.getElementById('input'); 
+console.log(input)
+input.addEventListener('keyup', (e) => {
+  newWord = e.target.value;
+  console.log(newWord)
 });
 
-
-let display = document.getElementById('displayTranslated');
-const button = document.getElementById('translateButton');
-button.addEventListener('click', (evt) => {
+let display = document.getElementById('display');
+const button = document.getElementById('button');
+button.addEventListener('click', (e) => {
   display.innerHTML = pigLatin(newWord);
   newWord = "";
   input.value = "";
 });
-
-
 
 const pigLatin = (word) => {
   word = word.trim().toLowerCase()
@@ -34,11 +34,11 @@ const pigLatin = (word) => {
 
   if (position == -1) {
     return word + 'ay'
-    //  this mean the (word) has no vowels in it 
+    //  this means the (word) has no vowels in it 
   }
   if (position == 0) {
     return word + 'yay'
-    //  this mean the (word) starts with a vowel 
+    //  this means the (word) starts with a vowel 
   }
   if (position > 0) {
     // this will check at with index the first vowel is in then run the according code block
@@ -129,41 +129,41 @@ let indexOfFirstVowel = (word) => {
 // the first function called in the program to get an input from the user
 // to run the function use the command: node main.js
 // to close it ctrl + C
-const getPrompt = () => {
-  rl.question('word ', (answer) => {
-    console.log(pigLatin(answer));
-    getPrompt();
-  });
-}
+// const getPrompt = () => {
+//   rl.question('word ', (answer) => {
+//     console.log(pigLatin(answer));
+//     getPrompt();
+//   });
+// }
 
-// Unit Tests
-// to use them run the command: npm test main.js
-// to close them ctrl + C
-if (typeof describe === 'function') {
+// // Unit Tests
+// // to use them run the command: npm test main.js
+// // to close them ctrl + C
+// if (typeof describe === 'function') {
 
-  describe('#pigLatin()', () => {
-    it('should translate a simple word', () => {
-      assert.equal(pigLatin('car'), 'arcay');
-      assert.equal(pigLatin('dog'), 'ogday');
-    });
-    it('should translate a complex word', () => {
-      assert.equal(pigLatin('create'), 'eatecray');
-      assert.equal(pigLatin('valley'), 'alleyvay');
-    });
-    it('should attach "yay" if word begins with vowel', () => {
-      assert.equal(pigLatin('egg'), 'eggyay');
-      assert.equal(pigLatin('emission'), 'emissionyay');
-    });
-    it('should lowercase and trim word before translation', () => {
-      assert.equal(pigLatin('HeLlO '), 'ellohay');
-      assert.equal(pigLatin(' RoCkEt'), 'ocketray');
-    });
-  });
-} else {
+//   describe('#pigLatin()', () => {
+//     it('should translate a simple word', () => {
+//       assert.equal(pigLatin('car'), 'arcay');
+//       assert.equal(pigLatin('dog'), 'ogday');
+//     });
+//     it('should translate a complex word', () => {
+//       assert.equal(pigLatin('create'), 'eatecray');
+//       assert.equal(pigLatin('valley'), 'alleyvay');
+//     });
+//     it('should attach "yay" if word begins with vowel', () => {
+//       assert.equal(pigLatin('egg'), 'eggyay');
+//       assert.equal(pigLatin('emission'), 'emissionyay');
+//     });
+//     it('should lowercase and trim word before translation', () => {
+//       assert.equal(pigLatin('HeLlO '), 'ellohay');
+//       assert.equal(pigLatin(' RoCkEt'), 'ocketray');
+//     });
+//   });
+// } else {
 
-  getPrompt();
+//   getPrompt();
 
-}
+// }
 
 
 
